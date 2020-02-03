@@ -1,0 +1,9 @@
+management:
+  info:
+    git:
+      mode: full
+spring:
+  application:
+    name: people-service-API
+cors:
+  url: "*"
