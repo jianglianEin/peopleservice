@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://backend-database:54322/digiswitch
+  application:
+    name: people-service-API
+cors:
+  url: "*"

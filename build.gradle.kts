@@ -39,6 +39,8 @@ dependencies {
     // aws
     implementation("com.amazonaws:aws-java-sdk:1.11.598")
 
+    implementation("org.postgresql:postgresql:42.2.5")
+
     // Logging
     implementation("ch.qos.logback:logback-classic:1.2.3")
     implementation("io.github.microutils:kotlin-logging:1.7.6")
