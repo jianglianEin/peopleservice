@@ -9,6 +9,6 @@ class PeopleResource() {
     @GetMapping()
     fun hello(): String {
         System.out.println("run in PeopleService")
-        returnls "hello world"
+        return "hello world"
     }
 }
