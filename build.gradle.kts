@@ -96,7 +96,7 @@ tasks.jacocoTestCoverageVerification {
             element = "CLASS"
 
             limit {
-                excludes = listOf("**Application*", "**config.*", "**logger*", "**ParameterStoreService*")
+                excludes = listOf("**Application*", "**config.*", "**dto*", "**dao*", "**resource*")
                 counter = "INSTRUCTION"
                 value = "COVEREDRATIO"
                 minimum = BigDecimal(0.85)

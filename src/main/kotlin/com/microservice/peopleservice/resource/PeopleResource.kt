@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class PeopleResource() {
+class PeopleResource {
 
     @GetMapping()
     fun hello(): String {
