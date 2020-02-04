@@ -2,6 +2,8 @@ package com.microservice.peopleservice.resource
 
 import com.microservice.peopleservice.dao.User
 import com.microservice.peopleservice.dto.Message
+import org.springframework.beans.factory.annotation.Value
+
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -9,10 +11,13 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class PeopleResource {
+    @Value("\${env}")
+    lateinit var env: String
 
     @GetMapping()
     fun hello(): String {
         System.out.println("run in PeopleService")
+        System.out.println(env)
         return "hello world"
     }
 

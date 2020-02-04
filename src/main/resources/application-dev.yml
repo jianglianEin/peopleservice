@@ -9,4 +9,4 @@ spring:
 cors:
   url: "*"
 
-env: "local"
+env: "dev"
