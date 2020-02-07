@@ -3,7 +3,7 @@ sudo: true
 jdk:
 - openjdk8
 before_install:
-- chmod +x ./mvnw
+- chmod +x ./gradlew
 script:
 - "./gradlew --console=plain clean download"
 - "./gradlew --console=plain clean build --no-daemon"
