@@ -1,9 +1,13 @@
 language: java
 sudo: true
 jdk:
-- openjdk8
+  - openjdk8
 before_install:
-- chmod +x ./gradlew
+  - chmod +x ./gradlew
 script:
-- "./gradlew --console=plain clean download"
-- "./gradlew --console=plain clean build --no-daemon"
+  - "./gradlew --console=plain clean download"
+  - "./gradlew --console=plain clean build --no-daemon"
+deploy:
+  provider: gae
+  keyfile: "client-secret.json"
+  project: "ein-final-year-project"
