@@ -2,7 +2,7 @@ FROM openjdk:8
 
 WORKDIR /app
 
-COPY ./gradlew settings.gradle build.gradle.kts  /app/
+COPY ./gradlew settings.gradle.kts build.gradle.kts  /app/
 COPY gradle  /app/gradle
 
 RUN  ./gradlew --console=plain clean download
