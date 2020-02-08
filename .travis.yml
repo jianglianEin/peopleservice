@@ -27,4 +27,5 @@ script:
   - gcloud auth activate-service-account --key-file client-secret.json
   - gcloud config set project ein-final-year-project
   - gcloud builds submit --tag gcr.io/ein-final-year-project/people-service-image .
-  - docker run gcr.io/ein-final-year-project/people-service-image
+#  - gcloud docker -- push gcr.io/<PROJECT NAME>/myimage:v1
+  - gcloud app deploy --image-url= gcr.io/ein-final-year-project/people-service-image:latest
