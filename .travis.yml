@@ -26,8 +26,12 @@ before_install:
 script:
   - gcloud auth activate-service-account --key-file client-secret.json
   - gcloud config set project ein-final-year-project
+  - gcloud config set compute/zone asia-northeast1-a
+  - gcloud components update
+
+  - gcloud container clusters get-credentials final-year-project-cluster
+
   - gcloud builds submit --tag gcr.io/ein-final-year-project/people-service-image .
-#  - gcloud docker -- push gcr.io/<PROJECT NAME>/myimage:v1
-#  - gcloud app deploy --image-url= gcr.io/ein-final-year-project/people-service-image:latest
+
   - kubectl apply -f ./kubernetes/gcp_deployment.yml -n peopleservice
   - kubectl apply -f ./kubernetes/gcp_service.yml -n peopleservice
