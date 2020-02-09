@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: peopleservice-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: peopleservice
+  ports:
+  - port: 443
+    targetPort: 8080

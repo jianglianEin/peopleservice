@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: peopleservice-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: peopleservice
+  template:
+    metadata:
+      labels:
+        app: peopleservice
+    spec:
+      containers:
+      - name: peopleservice
+        image: gcr.io/ein-final-year-project/people-service-image
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - name: http-port
+          containerPort: 8080
