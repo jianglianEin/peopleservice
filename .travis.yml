@@ -33,5 +33,5 @@ script:
 
   - gcloud builds submit --tag gcr.io/ein-final-year-project/people-service-image .
 
-  - kubectl apply -f ./kubernetes/gcp_deployment.yml -n peopleservice
-  - kubectl apply -f ./kubernetes/gcp_service.yml -n peopleservice
+  - kubectl apply -f ./kubernetes/gcp_deployment.yml
+  - kubectl apply -f ./kubernetes/gcp_service.yml
