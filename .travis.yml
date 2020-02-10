@@ -37,5 +37,4 @@ script:
   - sh ./script/push_docker_to_gcr.sh
   - sh ./script/filed_convert_to_latest_image.sh
 
-  - kubectl apply -f ./kubernetes/gcp_deployment.yml
-  - kubectl apply -f ./kubernetes/gcp_service.yml
+  - sh ./script/update_docker_run_on_the_gke.sh
