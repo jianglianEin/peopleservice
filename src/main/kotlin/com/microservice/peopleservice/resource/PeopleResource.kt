@@ -20,7 +20,7 @@ class PeopleResource {
     fun hello(): String {
         System.out.println("run in PeopleService")
         System.out.println(env.env)
-        return "hello world"
+        return "hello world" + env.env
     }
 
     @GetMapping("/user/login")
