@@ -6,15 +6,15 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: peopleservice
+      app: peopleservice-deployment
   template:
     metadata:
       labels:
-        app: peopleservice
+        app: peopleservice-deployment
     spec:
       containers:
-      - name: peopleservice
+      - name: peopleservice-deployment
         image: gcr.io/ein-final-year-project/people-service-image
         ports:
-        - name: http-port
-          containerPort: 8080
+        - port: 8080
+          protocol: TCP
