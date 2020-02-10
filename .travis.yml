@@ -24,14 +24,18 @@ before_install:
 
   - chmod +x ./gradlew
 script:
+  # init gcloud auth
   - gcloud auth activate-service-account --key-file client-secret.json
   - gcloud config set project ein-final-year-project
   - gcloud config set compute/zone asia-northeast1-a
   - gcloud components update
 
+  # get kubeconfig
   - gcloud container clusters get-credentials final-year-project-cluster
 
-  - gcloud builds submit --tag gcr.io/ein-final-year-project/people-service-image .
+  # create docker add tag with latest git commit id
+  - sh ./script/push_docker_to_gcr.sh
+  - sh ./script/filed_convert_to_latest_image.sh
 
   - kubectl apply -f ./kubernetes/gcp_deployment.yml
   - kubectl apply -f ./kubernetes/gcp_service.yml
