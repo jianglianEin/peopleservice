@@ -16,5 +16,5 @@ spec:
       - name: peopleservice-deployment
         image: gcr.io/ein-final-year-project/people-service-image
         ports:
-        - port: 8080
+        - containerPort: 8080
           protocol: TCP
