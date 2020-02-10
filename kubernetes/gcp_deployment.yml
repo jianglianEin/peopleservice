@@ -15,4 +15,6 @@ spec:
       containers:
       - name: peopleservice
         image: gcr.io/ein-final-year-project/people-service-image
-
+        ports:
+        - name: http-port
+          containerPort: 8080

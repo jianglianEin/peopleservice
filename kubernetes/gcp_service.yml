@@ -7,5 +7,5 @@ spec:
   selector:
     app: peopleservice-deployment
   ports:
-  - port: 443
+  - port: 8080
     targetPort: 8080
