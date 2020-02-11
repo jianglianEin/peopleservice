@@ -20,11 +20,11 @@ class PeopleResource {
     fun hello(): String {
         System.out.println("run in PeopleService")
         System.out.println(env.env)
-        return "hello world" + env.env
+        return "hello world\n" + env.env
     }
 
     @GetMapping("/user/login")
-    fun login(): User {
+    fun login(@PathVariable username: String, @PathVariable password: String): User {
         return User("jianglianEin","","/icon/image.jpg", "913057041@qq.com", 1)
     }
 

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  peopleservice-people-database:
+    image: postgres:9.5
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DB=people
+    command: ["-p", "54321"]
+    ports:
+    - "54321:54321"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
+    external: true
