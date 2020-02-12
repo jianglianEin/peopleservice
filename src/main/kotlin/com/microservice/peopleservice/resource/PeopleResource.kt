@@ -1,20 +1,19 @@
 package com.microservice.peopleservice.resource
 
 import com.microservice.peopleservice.config.EnvProperties
-import com.microservice.peopleservice.dao.User
+import com.microservice.peopleservice.entity.User
 import com.microservice.peopleservice.dto.Message
+import com.microservice.peopleservice.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
-
-
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class PeopleResource {
     @Autowired
     lateinit var env: EnvProperties
+
+    @Autowired
+    private lateinit var userService: UserService
 
     @GetMapping()
     fun hello(): String {
@@ -24,8 +23,8 @@ class PeopleResource {
     }
 
     @GetMapping("/user/login")
-    fun login(@PathVariable username: String, @PathVariable password: String): User {
-        return User("jianglianEin","","/icon/image.jpg", "913057041@qq.com", 1)
+    fun login(@RequestParam username: String, @RequestParam password: String): User {
+        return userService.loginByUsernameAndPassword(username, password)
     }
 
     @PostMapping("/user/register")

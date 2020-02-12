@@ -3,10 +3,10 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: postgres
-    url: jdbc:postgresql://backend-database:54322/digiswitch
+    url: jdbc:postgresql://localhost:54321/people
   application:
     name: people-service-API
 cors:
   url: "*"
 
-env: "test"
+env: "local"

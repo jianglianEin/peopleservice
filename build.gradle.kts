@@ -39,7 +39,9 @@ dependencies {
     // aws
     implementation("com.amazonaws:aws-java-sdk:1.11.598")
 
+    // datasource
     implementation("org.postgresql:postgresql:42.2.5")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // Logging
     implementation("ch.qos.logback:logback-classic:1.2.3")
@@ -96,7 +98,7 @@ tasks.jacocoTestCoverageVerification {
             element = "CLASS"
 
             limit {
-                excludes = listOf("**Application*", "**config.*", "**dto*", "**dao*", "**resource*")
+                excludes = listOf("**Application*", "**config.*", "**dto*", "**entity*", "**resource*", "**service*", "**repository*")
                 counter = "INSTRUCTION"
                 value = "COVEREDRATIO"
                 minimum = BigDecimal(0.85)
@@ -110,7 +112,7 @@ tasks.build {
 }
 
 tasks.bootRun {
-    val env = System.getProperty("app.env") ?: "local"
+    val env = System.getProperty("app.env") ?: "dev"
     System.out.println(env)
     systemProperty("spring.profiles.active", env)
 }

@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: postgres
-    url: jdbc:postgresql://localhost:54321/user
+    username: jianglianein
+    password: ft1998226
+    url: jdbc:postgresql://34.85.125.49:5432/people
   application:
     name: people-service-API
 cors:
