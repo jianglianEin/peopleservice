@@ -24,6 +24,9 @@ before_install:
 
   - chmod +x ./gradlew
 script:
+  # echo env var set on ci
+  - sh ./script/test_env_variable.sh
+
   # init gcloud auth
   - gcloud auth activate-service-account --key-file client-secret.json
   - gcloud config set project ein-final-year-project
