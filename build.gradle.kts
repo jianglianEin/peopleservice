@@ -36,9 +36,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    // aws
-    implementation("com.amazonaws:aws-java-sdk:1.11.598")
-
     // datasource
     implementation("org.postgresql:postgresql:42.2.5")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
