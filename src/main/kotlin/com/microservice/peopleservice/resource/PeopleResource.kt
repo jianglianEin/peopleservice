@@ -28,8 +28,12 @@ class PeopleResource {
     }
 
     @PostMapping("/user/register")
-    fun register(): Message {
-        return Message(true, "new user create success")
+    fun register(@RequestParam username: String,
+                 @RequestParam password: String,
+                 @RequestParam email: String): Message {
+        val newUser = User(username = username, password = password, email = email)
+
+        return userService.createUser(newUser)
     }
 
     @PostMapping("/user/update")
