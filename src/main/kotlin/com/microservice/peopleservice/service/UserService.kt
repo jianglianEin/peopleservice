@@ -53,4 +53,13 @@ class UserService {
             else -> Message(true, "update user success")
         }
     }
+
+    fun selectUserByUsernameSubstring(inputName: String): MutableList<User>? {
+        val containInputNameUserList = userRepository.findByUsernameContains(inputName)
+        containInputNameUserList?.map {
+            it.password = ""
+        }
+
+        return containInputNameUserList
+    }
 }

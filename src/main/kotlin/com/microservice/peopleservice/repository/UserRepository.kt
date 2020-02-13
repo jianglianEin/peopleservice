@@ -10,4 +10,5 @@ interface UserRepository: JpaRepository<User, Int> {
     fun findByUsernameOrEmail(username: String, email: String): User?
     fun save(user: User): User
     fun findByUsername(username: String): User?
+    fun findByUsernameContains(usernamePrefix: String): MutableList<User>?
 }

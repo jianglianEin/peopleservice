@@ -47,8 +47,9 @@ class PeopleResource {
     }
 
     @GetMapping("/user/select")
-    fun selectUser(@PathVariable username: String): User {
-        return User("jianglianEin","","/icon/image.jpg", "913057041@qq.com", 1)
+    fun selectUser(@RequestParam inputName: String): MutableList<User>? {
+
+        return userService.selectUserByUsernameSubstring(inputName)
     }
 
     @PostMapping("/team/create")
