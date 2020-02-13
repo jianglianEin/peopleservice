@@ -31,4 +31,26 @@ class UserService {
             else -> Message(false, "unknown error")
         }
     }
+
+    fun updateUserByUsername(updateUser: User): Message {
+        val oldUser = updateUser.username?.let {username -> userRepository.findByUsername(username) }
+
+        if (oldUser != null) {
+            when {
+                updateUser.password != null -> oldUser.password = updateUser.password
+            }
+            when {
+                updateUser.icon != null -> oldUser.icon = updateUser.icon
+            }
+            when {
+                updateUser.power != null -> oldUser.power = updateUser.power
+            }
+        }
+
+        val updateResult = oldUser?.let {saveUser -> userRepository.save(saveUser) }
+        return when {
+            updateResult == null -> Message(false, "username do not exit")
+            else -> Message(true, "update user success")
+        }
+    }
 }

@@ -37,8 +37,13 @@ class PeopleResource {
     }
 
     @PostMapping("/user/update")
-    fun updateUser(): Message {
-        return Message(true, "update user success")
+    fun updateUser(@RequestParam username: String?,
+                   @RequestParam password: String?,
+                   @RequestParam icon: String?,
+                   @RequestParam power: Int?): Message {
+        val updateUser = User(username = username, password = password, icon = icon, power = power)
+
+        return userService.updateUserByUsername(updateUser)
     }
 
     @GetMapping("/user/select")
