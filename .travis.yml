@@ -38,6 +38,6 @@ script:
 
   # create docker add tag with latest git commit id
   - sh ./script/push_docker_to_gcr.sh
-  - sh ./script/filed_convert_to_latest_image.sh
+  - sh ./script/placeholder_convert_to_real_data.sh
 
   - sh ./script/update_docker_run_on_the_gke.sh
