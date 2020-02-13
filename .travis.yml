@@ -26,6 +26,7 @@ before_install:
 script:
   # echo env var set on ci
   - sh ./script/test_env_variable.sh
+  - sh ./script/placeholder_convert_to_real_data.sh
 
   # init gcloud auth
   - gcloud auth activate-service-account --key-file client-secret.json
@@ -37,7 +38,6 @@ script:
   - gcloud container clusters get-credentials final-year-project-cluster
 
   # create docker add tag with latest git commit id
-  - sh ./script/push_docker_to_gcr.sh
-  - sh ./script/placeholder_convert_to_real_data.sh
+  - sh ./script/build_docker_with_latest_commit_id.sh
 
   - sh ./script/update_docker_run_on_the_gke.sh
