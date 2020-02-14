@@ -44,12 +44,17 @@ class TeamService {
                     }
                     else -> {
                         teamRepository.save(oldTeam)
-                        Message(true, "update user success")
+                        Message(true, "update team success")
                     }
                 }
             }
         }
 
         return Message(false, "team id do not exit")
+    }
+
+    fun removeTeamById(id: Int): Message {
+        teamRepository.deleteById(id)
+        return Message(true, "team remove success")
     }
 }

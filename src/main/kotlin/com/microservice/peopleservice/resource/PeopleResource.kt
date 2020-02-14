@@ -84,7 +84,7 @@ class PeopleResource {
     }
 
     @PostMapping("/team/remove")
-    fun removeTeam(): Message {
-        return Message(true, "remove team success")
+    fun removeTeam(@RequestParam id: Int): Message {
+        return teamService.removeTeamById(id)
     }
 }
