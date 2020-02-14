@@ -66,10 +66,11 @@ class PeopleResource {
     }
 
     @PostMapping("/team/handleUser")
-    fun handleUserInTeam(@PathVariable teamName: String,
-                         @PathVariable creator: String,
-                         @PathVariable isRemove: Boolean): Message {
-        return Message(true, "user deal with success")
+    fun modifyUserInTeam(@RequestParam teamId: Int,
+                         @RequestParam username: String,
+                         @RequestParam isAdd: Boolean): Message {
+
+        return teamService.modifyUserWithTeamHandler(teamId, username, isAdd)
     }
 
     @PostMapping("/team/update")
