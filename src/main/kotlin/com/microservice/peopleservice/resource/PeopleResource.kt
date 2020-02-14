@@ -73,8 +73,14 @@ class PeopleResource {
     }
 
     @PostMapping("/team/update")
-    fun updateTeam(): Message {
-        return Message(true, "update team success")
+    fun updateTeam(@RequestParam id: Int,
+                   @RequestParam creator: String,
+                   @RequestParam teamname: String,
+                   @RequestParam description: String): Message {
+        val updateTeam = Team(creator, teamname, description)
+        updateTeam.id = id
+
+        return teamService.updateTeamById(updateTeam)
     }
 
     @PostMapping("/team/remove")
