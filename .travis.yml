@@ -27,6 +27,8 @@ script:
   # echo env var set on ci
   - sh ./script/test_env_variable.sh
   - sh ./script/placeholder_convert_to_real_data.sh
+  - cat ./script/placeholder_convert_to_real_data.sh
+  - cat ./docker-compose.yml
 
   # init gcloud auth
   - gcloud auth activate-service-account --key-file client-secret.json
