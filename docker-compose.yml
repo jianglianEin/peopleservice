@@ -11,6 +11,15 @@ services:
     - "54321:54321"
     volumes:
       - pgdata:/var/lib/postgresql/data
+  redis:
+    container_name: redis
+    image: redis:5.0.5
+    ports:
+      - '6379:6379'
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./redis-data:/data
+
 volumes:
   pgdata:
     external: true

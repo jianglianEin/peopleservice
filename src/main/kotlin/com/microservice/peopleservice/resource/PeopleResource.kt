@@ -28,7 +28,12 @@ class PeopleResource {
 
     @GetMapping("/user/login")
     fun login(@RequestParam username: String, @RequestParam password: String): User {
-        return userService.loginByUsernameAndPassword(username, password)
+        return userService.login(username, password)
+    }
+
+    @GetMapping("/user/logout")
+    fun logout(@RequestParam username: String): Message {
+        return userService.logout(username)
     }
 
     @PostMapping("/user/register")

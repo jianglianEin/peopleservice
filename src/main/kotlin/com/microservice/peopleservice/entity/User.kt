@@ -25,7 +25,7 @@ class User() {
     var power: Int? = 1
 
     @Column(name = "username")
-    var username: String? = null
+    var username: String? = "null"
 
     constructor(username: String? = null,
                 password: String? = null,

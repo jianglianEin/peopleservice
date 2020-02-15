@@ -2,7 +2,9 @@ package com.microservice.peopleservice.service
 
 import com.microservice.peopleservice.dto.Message
 import com.microservice.peopleservice.entity.User
+import com.microservice.peopleservice.poko.type.UserStatusType
 import com.microservice.peopleservice.repository.UserRepository
+import com.microservice.peopleservice.repository.UserStatusRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -10,9 +12,26 @@ import org.springframework.stereotype.Service
 class UserService {
     @Autowired
     private lateinit var userRepository: UserRepository
+    @Autowired
+    private lateinit var userStatusRepository: UserStatusRepository
 
-    fun loginByUsernameAndPassword(username: String, password: String): User {
-        return userRepository.findByUsernameAndPassword(username, password)
+    fun login(username: String, password: String): User {
+        val loginUser = userRepository.findByUsernameAndPassword(username, password) ?: return User()
+        loginUser.password = ""
+
+        if (UserStatusType.Offline == userStatusRepository.get(username).value) {
+            val currentTime = System.currentTimeMillis()
+            userStatusRepository.update(UserStatusType.Online, username, currentTime)
+        }
+        return loginUser
+    }
+
+    fun logout(username: String): Message {
+        userRepository.findByUsername(username) ?: Message(false, "username do not exit")
+
+        val currentTime = System.currentTimeMillis()
+        userStatusRepository.update(UserStatusType.Offline, username, currentTime)
+        return Message(true, "logout success")
     }
 
     fun createUser(newUse: User): Message {

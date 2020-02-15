@@ -6,6 +6,10 @@ spring:
     url: jdbc:postgresql://34.85.125.49:5432/people
   application:
     name: people-service-API
+  redis:
+    host: 34.85.125.49
+    port: 6379
+    timeout: 10000
 cors:
   url: "*"
 
