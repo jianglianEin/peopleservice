@@ -8,4 +8,4 @@ spec:
     app: peopleservice-deployment
   ports:
   - port: 8080
-    targetPort: 8080
+    targetPort: 8000
