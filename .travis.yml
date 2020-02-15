@@ -25,7 +25,6 @@ before_install:
   - chmod +x ./gradlew
 script:
   # echo env var set on ci
-  - sh ./script/test_env_variable.sh
   - sh ./script/placeholder_convert_to_real_data.sh
   - cat ./kubernetes/gcp_deployment.yml
   - cat ./docker-entrypoint.sh
