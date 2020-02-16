@@ -1,0 +1,10 @@
+--input
+D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\config\BeanConfig.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\config\EnvProperties.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\config\SwaggerConfig.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\dto\Message.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\entity\Team.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\entity\User.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\entity\UserTeamRelation.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\PeopleserviceApplication.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\poko\type\UserStatusType.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\poko\UserStatus.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\repository\TeamRepository.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\repository\UserRepository.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\repository\UserStatusRepository.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\repository\UserTeamRepository.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\resource\PeopleResource.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\service\TeamService.kt,D:\FinalYearProjects\peopleservice\src\main\kotlin\com\microservice\peopleservice\service\UserService.kt
+--config
+D:\FinalYearProjects\peopleservice\src\main\resources\stylecheck.yml
+--report
+xml:D:\FinalYearProjects\peopleservice\build\reports\detekt\detekt.xml
+--report
+html:D:\FinalYearProjects\peopleservice\build\reports\detekt\detekt.html
+--report
+txt:D:\FinalYearProjects\peopleservice\build\reports\detekt\detekt.txt
