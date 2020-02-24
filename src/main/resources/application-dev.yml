@@ -14,3 +14,7 @@ cors:
   url: "*"
 
 env: "dev"
+
+server:
+  #端口号
+  port: 8000
