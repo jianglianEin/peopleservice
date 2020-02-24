@@ -34,7 +34,6 @@ deploy:
   api: https://api.run.pivotal.io
   organization: jianglianEin
   space: development
-  manifest: manifest-staging.yml       # (optional)  Defaults to manifest.yml.
   app_name: peopleservice
   on:
     repo: jianglianEin/peopleservice
