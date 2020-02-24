@@ -19,9 +19,6 @@ env:
 before_install:
   - chmod +x ./gradlew
 
-install:
-  - ./gradlew assemble
-
 script:
   - ./gradlew check
   - ./gradlew --console=plain clean download
@@ -34,7 +31,7 @@ deploy:
   api: https://api.run.pivotal.io
   organization: jianglianEin
   space: development
-  app_name: peopleservice
+  app_name: jianglianEin_peopleservice
   on:
     repo: jianglianEin/peopleservice
 
