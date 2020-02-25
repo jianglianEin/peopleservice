@@ -20,6 +20,7 @@ before_install:
   - chmod +x ./gradlew
 
 script:
+  - sh ./script/placeholder_convert_to_real_data_cf.sh
   - ./gradlew check
   - ./gradlew --console=plain clean download
   - ./gradlew --console=plain clean build --no-daemon

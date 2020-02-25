@@ -7,6 +7,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
     id("io.gitlab.arturbosch.detekt") version "1.1.1"
     id("jacoco")
+    id("war")
     kotlin("jvm") version "1.3.50"
     kotlin("plugin.spring") version "1.3.50"
 }
