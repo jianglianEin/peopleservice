@@ -7,12 +7,6 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:54321/people</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="people@35.200.34.51" uuid="9fc753e8-597c-4995-a743-c9e53b637aa0">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://35.200.34.51:5432/people</jdbc-url>
-    </data-source>
     <data-source source="LOCAL" name="scrumproject@localhost" uuid="e8a22b94-0576-4472-acc2-bcf46b04016d">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
