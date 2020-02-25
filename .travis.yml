@@ -21,6 +21,7 @@ before_install:
 
 script:
   - sh ./script/placeholder_convert_to_real_data_cf.sh
+  - cat ./src/main/resources/application.yml
   - ./gradlew check
   - ./gradlew --console=plain clean download
   - ./gradlew --console=plain clean build --no-daemon
