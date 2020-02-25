@@ -2,5 +2,5 @@
 applications:
   - name: peopleservice
     buildpack: java_buildpack
-    command: java -jar build/libs/peopleservice-0.0.1-SNAPSHOT.jar --spring.profiles.active=${APP_ENV}
-    path: build/libs/peopleservice-0.0.1-SNAPSHOT.jar
+    command: java -jar build/libs/peopleservice-0.0.1-SNAPSHOT.war --spring.profiles.active=${APP_ENV}
+    path: build/libs/peopleservice-0.0.1-SNAPSHOT.war
