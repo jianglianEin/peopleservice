@@ -26,12 +26,12 @@ class PeopleResource {
         return "hello world\n" + env.env
     }
 
-    @GetMapping("/user/login")
+    @PostMapping("/user/login")
     fun login(@RequestParam username: String, @RequestParam password: String): User {
         return userService.login(username, password)
     }
 
-    @GetMapping("/user/logout")
+    @PostMapping("/user/logout")
     fun logout(@RequestParam username: String): Message {
         return userService.logout(username)
     }
