@@ -17,7 +17,6 @@ class UserService {
 
     fun login(username: String, password: String): User {
         val loginUser = userRepository.findByUsernameAndPassword(username, password) ?: return User()
-        loginUser.password = ""
 
         if (UserStatusType.Offline == userStatusRepository.get(username).value) {
             val currentTime = System.currentTimeMillis()
