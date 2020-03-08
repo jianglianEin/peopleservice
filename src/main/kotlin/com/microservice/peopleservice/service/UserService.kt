@@ -26,7 +26,9 @@ class UserService {
     }
 
     fun logout(username: String): Message {
-        userRepository.findByUsername(username) ?: Message(false, "username do not exit")
+        if (userRepository.findByUsername(username) == null) {
+            return Message(false, "username do not exit")
+        }
 
         val currentTime = System.currentTimeMillis()
         userStatusRepository.update(UserStatusType.Offline, username, currentTime)
