@@ -28,7 +28,7 @@ class TeamService {
 
         val newTeamCreateSuccess = teamRepository.save(newTeam)
         addUserIntoTeam(UserTeamRelation(newTeamCreateSuccess.creator, newTeamCreateSuccess.id))
-        return Message(true, "team create success")
+        return Message(true, "teamId: ${newTeamCreateSuccess.id}")
     }
 
     fun updateTeamById(updateTeam: Team): Message {
