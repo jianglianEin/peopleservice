@@ -54,6 +54,8 @@ class TeamResource {
     fun sendEmail(@RequestParam receiverMail: String,
                   @RequestParam announcer: String,
                   @RequestParam teamId: Int): Message {
-        return mailService.sendEmailToInviteReceiver(receiverMail, announcer, teamId)
+        mailService.sendEmailToInviteReceiver(receiverMail, announcer, teamId)
+
+        return Message(true, "send email service is working")
     }
 }
