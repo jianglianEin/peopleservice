@@ -1,5 +1,6 @@
 package com.microservice.peopleservice.service
 
+import com.microservice.peopleservice.dto.Message
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.mail.javamail.JavaMailSender
@@ -14,7 +15,7 @@ class MailService {
     @Value("\${microservice.peopleservice.url}")
     lateinit var peopleServiceUrl: String
 
-    fun sendEmailToInviteReceiver(receiverMail: String, announcer: String, teamId: Int){
+    fun sendEmailToInviteReceiver(receiverMail: String, announcer: String, teamId: Int): Message {
         val message = mailSender.createMimeMessage()
         val messageHelper = MimeMessageHelper(message, true)
         messageHelper.setFrom("913057041@qq.com")
@@ -28,5 +29,7 @@ class MailService {
                 "teamId=$teamId&username=$announcer&isAdd=true")
 
         mailSender.send(message)
+
+        return Message(true, "send success")
     }
 }
