@@ -36,6 +36,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+    //Email
+    implementation("org.springframework.boot:spring-boot-starter-mail")
+
     // datasource
     implementation("org.postgresql:postgresql:42.2.5")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

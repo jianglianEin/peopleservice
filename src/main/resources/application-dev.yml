@@ -13,6 +13,10 @@ spring:
 cors:
   url: "*"
 
+microservice:
+  peopleservice:
+    url: https://jianglianeinpeopleservice.cfapps.io
+
 env: "dev"
 
 server:

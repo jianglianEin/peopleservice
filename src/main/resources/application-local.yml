@@ -13,6 +13,10 @@ spring:
 cors:
   url: "*"
 
+microservice:
+  peopleservice:
+    url: http://localhost:8000
+
 env: "local"
 
 server:

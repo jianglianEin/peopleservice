@@ -3,21 +3,17 @@ package com.microservice.peopleservice.resource
 import com.microservice.peopleservice.config.EnvProperties
 import com.microservice.peopleservice.entity.User
 import com.microservice.peopleservice.dto.Message
-import com.microservice.peopleservice.entity.Team
-import com.microservice.peopleservice.service.TeamService
 import com.microservice.peopleservice.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-class PeopleResource {
+class UserResource {
     @Autowired
     lateinit var env: EnvProperties
 
     @Autowired
     private lateinit var userService: UserService
-    @Autowired
-    private lateinit var teamService: TeamService
 
     @GetMapping()
     fun hello(): String {
@@ -59,38 +55,5 @@ class PeopleResource {
     fun selectUser(@RequestParam inputName: String): MutableList<User>? {
 
         return userService.selectUserByUsernameSubstring(inputName)
-    }
-
-    @PostMapping("/team/create")
-    fun createTeam(@RequestParam teamname: String,
-                   @RequestParam description: String,
-                   @RequestParam creator: String): Message {
-        val newTeam = Team(creator, teamname, description)
-
-        return teamService.createTeam(newTeam)
-    }
-
-    @PostMapping("/team/handleUser")
-    fun modifyUserInTeam(@RequestParam teamId: Int,
-                         @RequestParam username: String,
-                         @RequestParam isAdd: Boolean): Message {
-
-        return teamService.modifyUserWithTeamHandler(teamId, username, isAdd)
-    }
-
-    @PostMapping("/team/update")
-    fun updateTeam(@RequestParam id: Int,
-                   @RequestParam creator: String,
-                   @RequestParam teamname: String,
-                   @RequestParam description: String): Message {
-        val updateTeam = Team(creator, teamname, description)
-        updateTeam.id = id
-
-        return teamService.updateTeamById(updateTeam)
-    }
-
-    @PostMapping("/team/remove")
-    fun removeTeam(@RequestParam id: Int): Message {
-        return teamService.removeTeamById(id)
     }
 }
