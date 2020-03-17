@@ -1,6 +1,5 @@
 package com.microservice.peopleservice.service
 
-import com.microservice.peopleservice.dto.Message
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.mail.javamail.JavaMailSender
