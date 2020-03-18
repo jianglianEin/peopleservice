@@ -37,19 +37,17 @@ class TeamService {
         val oldTeamOptional = teamRepository.findById(updateTeam.id!!)
         if (oldTeamOptional.isPresent) {
             val oldTeam = oldTeamOptional.get()
-            oldTeam.description = updateTeam.description
-
-            if (!oldTeam.teamname.equals(updateTeam.teamname)) {
-                oldTeam.teamname = updateTeam.teamname
-                val sameCreatorAndNameTeam = teamRepository.findByCreatorAndTeamname(oldTeam.creator!!, oldTeam.teamname!!)
-                return when {
-                    sameCreatorAndNameTeam != null -> {
-                        Message(false, "one creator can not create same name team")
-                    }
-                    else -> {
-                        teamRepository.save(oldTeam)
-                        Message(true, "update team success")
-                    }
+            return when {
+                oldTeam.teamname != updateTeam.teamname -> {
+                    Message(false, "can not change team name")
+                }
+                oldTeam.creator != updateTeam.creator -> {
+                    Message(false, "input creator is error")
+                }
+                else -> {
+                    oldTeam.description = updateTeam.description
+                    teamRepository.save(oldTeam)
+                    Message(true, "update team success")
                 }
             }
         }
