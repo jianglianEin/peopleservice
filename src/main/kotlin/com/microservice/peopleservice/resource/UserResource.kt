@@ -51,7 +51,7 @@ class UserResource {
         return userService.updateUserByUsername(updateUser)
     }
 
-    @GetMapping("/user/select")
+    @PostMapping("/user/select")
     fun selectUser(@RequestParam inputName: String): MutableList<User>? {
 
         return userService.selectUserByUsernameSubstring(inputName)
