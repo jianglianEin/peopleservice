@@ -38,7 +38,7 @@ class TeamResource {
     fun updateTeam(@RequestParam id: Int,
                    @RequestParam creator: String,
                    @RequestParam teamname: String,
-                   @RequestParam description: String): Message {
+                   @RequestParam description: String): Team {
         val updateTeam = Team(creator, teamname, description)
         updateTeam.id = id
 
