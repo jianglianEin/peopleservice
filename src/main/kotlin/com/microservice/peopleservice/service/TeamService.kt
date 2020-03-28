@@ -9,7 +9,6 @@ import com.microservice.peopleservice.repository.UserTeamRepository
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import kotlin.math.log
 
 @Service
 class TeamService {
