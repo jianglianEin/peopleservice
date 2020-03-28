@@ -116,4 +116,19 @@ class TeamService {
             }
         }
     }
+
+    fun selectTeamByUsername(username: String): MutableList<Team> {
+        val userTeamRelationList = userTeamRepository.findAllByUsername(username)
+
+        val teamList = mutableListOf<Team>()
+        for (userTeamRelation in userTeamRelationList){
+            val teamOptional = teamRepository.findById(userTeamRelation.teamId!!)
+
+            if (teamOptional.isPresent){
+                teamList.add(teamOptional.get())
+            }
+        }
+
+        return teamList
+    }
 }
