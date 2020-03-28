@@ -6,8 +6,10 @@ import com.microservice.peopleservice.entity.UserTeamRelation
 import com.microservice.peopleservice.repository.TeamRepository
 import com.microservice.peopleservice.repository.UserRepository
 import com.microservice.peopleservice.repository.UserTeamRepository
+import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import kotlin.math.log
 
 @Service
 class TeamService {
@@ -18,41 +20,45 @@ class TeamService {
     @Autowired
     private lateinit var userTeamRepository: UserTeamRepository
 
-    fun createTeam(newTeam: Team): Message {
-        userRepository.findByUsername(newTeam.creator!!) ?: return Message(false, "no this user")
+    private var logger = KotlinLogging.logger {}
+
+    fun createTeam(newTeam: Team): Team {
+        userRepository.findByUsername(newTeam.creator!!) ?: return Team(description = "no this user")
 
         val sameCreatorAndNameTeam = teamRepository.findByCreatorAndTeamname(newTeam.creator!!, newTeam.teamname!!)
         if (sameCreatorAndNameTeam != null) {
-            return Message(false, "one creator can not create same name team")
+            logger.warn { "one creator can not create same name team" }
+            return Team(description = "one creator can not create same name team")
         }
 
-        val newTeamCreateSuccess = teamRepository.save(newTeam)
-        addUserIntoTeam(UserTeamRelation(newTeamCreateSuccess.creator, newTeamCreateSuccess.id))
-        return Message(true, "teamId: ${newTeamCreateSuccess.id}")
+        val saveTeam = teamRepository.save(newTeam)
+        addUserIntoTeam(UserTeamRelation(saveTeam.creator, saveTeam.id))
+        return saveTeam
     }
 
-    fun updateTeamById(updateTeam: Team): Message {
-        userRepository.findByUsername(updateTeam.creator!!) ?: return Message(false, "no this user")
+    fun updateTeamById(updateTeam: Team): Team {
+        userRepository.findByUsername(updateTeam.creator!!) ?: return Team(description = "no this user")
 
         val oldTeamOptional = teamRepository.findById(updateTeam.id!!)
         if (oldTeamOptional.isPresent) {
             val oldTeam = oldTeamOptional.get()
             return when {
                 oldTeam.teamname != updateTeam.teamname -> {
-                    Message(false, "can not change team name")
+                    logger.warn { "can not change team name" }
+                    Team(description = "can not change team name")
                 }
                 oldTeam.creator != updateTeam.creator -> {
-                    Message(false, "input creator is error")
+                    logger.warn { "input creator is error" }
+                    Team(description = "input creator is error")
                 }
                 else -> {
                     oldTeam.description = updateTeam.description
                     teamRepository.save(oldTeam)
-                    Message(true, "update team success")
                 }
             }
         }
-
-        return Message(false, "team id do not exit")
+        logger.warn { "team id do not exit" }
+        return Team(description = "team id do not exit")
     }
 
     fun removeTeamById(id: Int): Message {

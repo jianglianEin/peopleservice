@@ -45,7 +45,7 @@ class UserResource {
     fun updateUser(@RequestParam username: String?,
                    @RequestParam password: String?,
                    @RequestParam icon: String?,
-                   @RequestParam power: Int?): Message {
+                   @RequestParam power: Int?): User {
         val updateUser = User(username = username, password = password, icon = icon, power = power)
 
         return userService.updateUserByUsername(updateUser)

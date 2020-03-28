@@ -52,7 +52,7 @@ class UserService {
         }
     }
 
-    fun updateUserByUsername(updateUser: User): Message {
+    fun updateUserByUsername(updateUser: User): User {
         val oldUser = updateUser.username?.let {username -> userRepository.findByUsername(username) }
 
         if (oldUser != null) {
@@ -68,9 +68,9 @@ class UserService {
         }
 
         val updateResult = oldUser?.let {saveUser -> userRepository.save(saveUser) }
-        return when {
-            updateResult == null -> Message(false, "username do not exit")
-            else -> Message(true, "update user success")
+        return when (updateResult) {
+            null -> User()
+            else -> updateResult
         }
     }
 
