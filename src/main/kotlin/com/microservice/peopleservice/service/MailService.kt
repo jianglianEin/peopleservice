@@ -16,18 +16,18 @@ class MailService {
     lateinit var peopleServiceUrl: String
 
     @Async
-    fun sendEmailToInviteReceiver(receiverMail: String, announcer: String, teamId: Int) {
+    fun sendEmailToInviteReceiver(receiverMail: String, receiver: String, teamId: Int) {
         val message = mailSender.createMimeMessage()
         val messageHelper = MimeMessageHelper(message, true)
         messageHelper.setFrom("913057041@qq.com")
         messageHelper.setTo(receiverMail)
         messageHelper.setSubject("Join team message:")
         messageHelper.setText("Hello!, dear $receiverMail!\n" +
-                "$announcer invite you to join $announcer's team!\n" +
-                "if you want to work with $announcer, " +
+                "$receiver invite you to join $receiver's team!\n" +
+                "if you want to work with $receiver, " +
                 "please click following link:\n"+
                 "$peopleServiceUrl/team/handleUser?" +
-                "teamId=$teamId&username=$announcer&isAdd=true")
+                "teamId=$teamId&username=$receiver&isAdd=true")
 
         mailSender.send(message)
     }

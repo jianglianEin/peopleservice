@@ -52,9 +52,9 @@ class TeamResource {
 
     @PostMapping("/mail/send")
     fun sendEmail(@RequestParam receiverMail: String,
-                  @RequestParam announcer: String,
+                  @RequestParam receiver: String,
                   @RequestParam teamId: Int): Message {
-        mailService.sendEmailToInviteReceiver(receiverMail, announcer, teamId)
+        mailService.sendEmailToInviteReceiver(receiverMail, receiver, teamId)
 
         return Message(true, "send email service is working")
     }
