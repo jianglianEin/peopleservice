@@ -86,7 +86,7 @@ class TeamService {
         userRepository.findByUsername(username) ?: return Message(false, "no this user")
         val modifyTeamOption = teamRepository.findById(teamId)
         return when {
-            modifyTeamOption.isEmpty -> Message(false, "team id do not exit")
+            !modifyTeamOption.isPresent -> Message(false, "team id do not exit")
             modifyTeamOption.get().creator.equals(username) -> Message(false, "team can not modify creator by this function")
             else -> Message(true, "ok")
         }

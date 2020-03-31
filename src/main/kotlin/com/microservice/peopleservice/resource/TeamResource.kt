@@ -60,7 +60,7 @@ class TeamResource {
     }
 
     @PostMapping("/team/selectTeamByUsername")
-    fun sendEmail(@RequestParam username: String): MutableList<Team> {
+    fun selectTeamByUsername(@RequestParam username: String): MutableList<Team> {
 
         return teamService.selectTeamByUsername(username)
     }
