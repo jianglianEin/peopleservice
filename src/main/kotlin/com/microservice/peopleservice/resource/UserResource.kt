@@ -56,4 +56,10 @@ class UserResource {
 
         return userService.selectUserByUsernameSubstring(inputName)
     }
+
+    @PostMapping("/user/selectByName")
+    fun selectUserByName(@RequestParam username: String): User {
+
+        return userService.selectUserByUsername(username)
+    }
 }

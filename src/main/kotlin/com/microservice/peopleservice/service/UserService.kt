@@ -82,4 +82,13 @@ class UserService {
 
         return containInputNameUserList
     }
+
+    fun selectUserByUsername(username: String): User {
+        val user = userRepository.findByUsername(username)
+        if (user != null){
+            return user
+        }else {
+            return User()
+        }
+    }
 }
