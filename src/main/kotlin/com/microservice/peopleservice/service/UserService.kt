@@ -5,6 +5,7 @@ import com.microservice.peopleservice.entity.User
 import com.microservice.peopleservice.poko.type.UserStatusType
 import com.microservice.peopleservice.repository.UserRepository
 import com.microservice.peopleservice.repository.UserStatusRepository
+import com.microservice.peopleservice.repository.UserTeamRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -14,6 +15,8 @@ class UserService {
     private lateinit var userRepository: UserRepository
     @Autowired
     private lateinit var userStatusRepository: UserStatusRepository
+    @Autowired
+    private lateinit var userTeamRepository: UserTeamRepository
 
     fun login(username: String, password: String): User {
         val loginUser = userRepository.findByUsernameAndPassword(username, password) ?: return User()
@@ -85,10 +88,21 @@ class UserService {
 
     fun selectUserByUsername(username: String): User {
         val user = userRepository.findByUsername(username)
-        if (user != null){
-            return user
-        }else {
-            return User()
+        return when {
+            user != null -> user
+            else -> User()
         }
+    }
+
+    fun selectPeopleByTeam(teamId: String): MutableList<User> {
+        val people = mutableListOf<User>()
+       val userTeamRelations = userTeamRepository.findAllByTeamId(teamId.toInt())
+        for (userTeamRelation in userTeamRelations){
+            val userInTeam = userRepository.findByUsername(userTeamRelation.username!!)
+            if (userInTeam != null){
+                people.add(userInTeam)
+            }
+        }
+        return people
     }
 }

@@ -62,4 +62,10 @@ class UserResource {
 
         return userService.selectUserByUsername(username)
     }
+
+    @PostMapping("/user/selectByTeam")
+    fun selectPeopleByTeam(@RequestParam teamId: String): MutableList<User>{
+
+        return userService.selectPeopleByTeam(teamId)
+    }
 }

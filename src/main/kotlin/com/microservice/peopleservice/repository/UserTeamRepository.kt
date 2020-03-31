@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository
 interface UserTeamRepository: JpaRepository<UserTeamRelation, Int> {
     fun findByUsernameAndTeamId(username: String, teamId: Int): UserTeamRelation?
     fun findAllByUsername(username: String): MutableList<UserTeamRelation>
+    fun findAllByTeamId(teamId: Int): MutableList<UserTeamRelation>
 }
