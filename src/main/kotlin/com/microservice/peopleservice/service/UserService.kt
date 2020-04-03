@@ -18,23 +18,23 @@ class UserService {
     @Autowired
     private lateinit var userTeamRepository: UserTeamRepository
 
-    fun login(username: String, password: String): User {
+    fun login(username: String, password: String, uid: String): User {
         val loginUser = userRepository.findByUsernameAndPassword(username, password) ?: return User()
 
-        if (UserStatusType.Offline == userStatusRepository.get(username).value) {
+        if (UserStatusType.Offline == userStatusRepository.get(uid).value) {
             val currentTime = System.currentTimeMillis()
-            userStatusRepository.update(UserStatusType.Online, username, currentTime)
+            userStatusRepository.update(UserStatusType.Online, uid, currentTime)
         }
         return loginUser
     }
 
-    fun logout(username: String): Message {
+    fun logout(username: String, uid: String): Message {
         if (userRepository.findByUsername(username) == null) {
             return Message(false, "username do not exit")
         }
 
         val currentTime = System.currentTimeMillis()
-        userStatusRepository.update(UserStatusType.Offline, username, currentTime)
+        userStatusRepository.update(UserStatusType.Offline, uid, currentTime)
         return Message(true, "logout success")
     }
 

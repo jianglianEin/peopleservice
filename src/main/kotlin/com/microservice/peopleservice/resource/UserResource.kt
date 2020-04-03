@@ -23,13 +23,13 @@ class UserResource {
     }
 
     @PostMapping("/user/login")
-    fun login(@RequestParam username: String, @RequestParam password: String): User {
-        return userService.login(username, password)
+    fun login(@RequestParam username: String, @RequestParam password: String, @RequestParam uid: String): User {
+        return userService.login(username, password, uid)
     }
 
     @PostMapping("/user/logout")
-    fun logout(@RequestParam username: String): Message {
-        return userService.logout(username)
+    fun logout(@RequestParam username: String, @RequestParam uid: String): Message {
+        return userService.logout(username, uid)
     }
 
     @PostMapping("/user/register")

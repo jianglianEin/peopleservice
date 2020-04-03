@@ -10,24 +10,24 @@ import redis.clients.jedis.JedisPool
 class UserStatusRepository {
     @Autowired
     private lateinit var jedisPool: JedisPool
-    private val userPrefix = "User"
+    private val uidPrefix = "uid"
     private val statusField = "status"
     private val statusValue = "value"
     private val statusUpdateTime = "updateTime"
 
-    fun update(statusType: UserStatusType, username: String, timestamp: Long) {
+    fun update(statusType: UserStatusType, uid: String, timestamp: Long) {
         jedisPool.resource.use { jedis ->
             with(jedis) {
-                hset("$userPrefix:$username", "$statusField:$statusValue", statusType.toString())
-                hset("$userPrefix:$username", "$statusField:$statusUpdateTime", timestamp.toString())
+                hset("$uidPrefix:$uid", "$statusField:$statusValue", statusType.toString())
+                hset("$uidPrefix:$uid", "$statusField:$statusUpdateTime", timestamp.toString())
             }
         }
     }
 
-    fun get(username: String): UserStatus {
+    fun get(uid: String): UserStatus {
         var userInfo = mutableMapOf<String, String>()
         jedisPool.resource.use {
-            userInfo = it.hgetAll("$userPrefix:$username")
+            userInfo = it.hgetAll("$uidPrefix:$uid")
         }
         if (userInfo.isEmpty()) {
             return UserStatus()
@@ -35,6 +35,6 @@ class UserStatusRepository {
         val statusValue = UserStatusType.valueOf(userInfo["$statusField:$statusValue"]!!)
         val updateTime = userInfo["$statusField:$statusUpdateTime"]!!.toLong()
 
-        return UserStatus(statusValue, username, updateTime)
+        return UserStatus(statusValue, uid, updateTime)
     }
 }
