@@ -23,7 +23,7 @@ class UserService {
 
         if (UserStatusType.Offline == userStatusRepository.get(uid).value) {
             val currentTime = System.currentTimeMillis()
-            userStatusRepository.update(UserStatusType.Online, uid, currentTime)
+            userStatusRepository.update(UserStatusType.Online, uid, currentTime, username)
         }
         return loginUser
     }
@@ -34,7 +34,7 @@ class UserService {
         }
 
         val currentTime = System.currentTimeMillis()
-        userStatusRepository.update(UserStatusType.Offline, uid, currentTime)
+        userStatusRepository.update(UserStatusType.Offline, uid, currentTime, username)
         return Message(true, "logout success")
     }
 
