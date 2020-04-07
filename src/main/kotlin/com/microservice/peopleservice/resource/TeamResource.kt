@@ -19,7 +19,7 @@ class TeamResource {
 
     @PostMapping("/team/create")
     fun createTeam(@RequestParam teamname: String,
-                   @RequestParam description: String,
+                   @RequestParam description: String?,
                    @RequestParam creator: String): Team {
         val newTeam = Team(creator, teamname, description)
 
