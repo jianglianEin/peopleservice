@@ -10,7 +10,7 @@ spring:
     host: 45.32.133.122
     port: 6379
     timeout: 10000
-    password: ${redisPassword}
+    password: ft1998226
 cors:
   url: "*"
 
