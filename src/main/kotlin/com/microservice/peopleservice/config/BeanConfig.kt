@@ -18,6 +18,6 @@ class BeanConfig {
         val jedisPoolConfig = JedisPoolConfig()
         jedisPoolConfig.maxTotal = 100
         val timeout = redisProperties.timeout.toMillis().toInt()
-        return JedisPool(jedisPoolConfig, redisProperties.host, redisProperties.port, timeout)
+        return JedisPool(jedisPoolConfig, redisProperties.host, redisProperties.port, timeout, redisProperties.password)
     }
 }
