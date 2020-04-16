@@ -15,6 +15,7 @@ class UserStatusRepository {
     private val statusValue = "value"
     private val statusUpdateTime = "updateTime"
     private val statusUser = "username"
+    private val expireTime = 3600 * 12
 
     fun update(statusType: UserStatusType, uid: String, timestamp: Long, username: String) {
         jedisPool.resource.use { jedis ->
@@ -22,6 +23,7 @@ class UserStatusRepository {
                 hset("$uidPrefix:$uid", "$statusField:$statusValue", statusType.toString())
                 hset("$uidPrefix:$uid", "$statusField:$statusUpdateTime", timestamp.toString())
                 hset("$uidPrefix:$uid", "$statusField:$statusUser", username)
+                expire("$uidPrefix:$uid", expireTime)
             }
         }
     }
