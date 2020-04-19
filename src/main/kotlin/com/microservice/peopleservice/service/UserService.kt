@@ -59,14 +59,14 @@ class UserService {
         val oldUser = updateUser.username?.let {username -> userRepository.findByUsername(username) }
 
         if (oldUser != null) {
-            when {
-                updateUser.password != null -> oldUser.password = updateUser.password
+            if (updateUser.password != null){
+                oldUser.password = updateUser.password
             }
-            when {
-                updateUser.icon != null -> oldUser.icon = updateUser.icon
+            if (updateUser.icon != null) {
+                oldUser.icon = updateUser.icon
             }
-            when {
-                updateUser.power != null -> oldUser.power = updateUser.power
+            if (updateUser.power != null){
+                oldUser.power = updateUser.power
             }
         }
 
