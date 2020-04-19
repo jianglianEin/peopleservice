@@ -71,7 +71,7 @@ class TeamService {
 
     fun modifyUserWithTeamHandler(teamId: Int, username: String, add: Boolean): Message {
         val checkMessage = checkUsernameAndTeamIdIsValidity(username, teamId)
-        if (!checkMessage.isSusses){
+        if (!checkMessage.success){
             return checkMessage
         }
 
