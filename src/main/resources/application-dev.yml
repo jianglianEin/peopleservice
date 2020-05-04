@@ -16,7 +16,7 @@ cors:
 
 microservice:
   peopleservice:
-    url: https://jianglianeinpeopleservice.cfapps.io
+    url: https://jianglianzweipeopleservice.cfapps.io
 
 env: "dev"
 
