@@ -10,6 +10,17 @@ spring:
     host: localhost
     port: 6379
     timeout: 10000
+  mail:
+    host: smtp.qq.com
+    username: 913057041@qq.com
+    password: vcxnmszkmxodbefj
+    default-encoding: utf-8
+    properties:
+      mail:
+        auth: true
+        starttls:
+          enable: true
+          required: true
 cors:
   url: "*"
 
