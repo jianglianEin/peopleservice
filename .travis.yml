@@ -29,8 +29,8 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: "c4622ef0-3e1a-455d-a666-b4ef7612702a"
-  app: scrum_board_people_microservice
+    secure: "9530242a-fced-4da8-866c-ebacc98a6f9f"
+  app: scrum-board-people-microservic
 
 ####################   ####################
 
