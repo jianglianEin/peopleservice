@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: ${APP_ENV}
+    active: dev
   mail:
     host: smtp.qq.com
     username: 913057041@qq.com
