@@ -110,11 +110,12 @@ tasks.jacocoTestCoverageVerification {
 }
 
 tasks.build {
+    System.out.println("build")
     finalizedBy(tasks.jacocoTestCoverageVerification, tasks.jacocoTestReport)
 }
 
 tasks.bootRun {
-    val env = System.getenv("APP_ENV") ?: "local"
+    val env = System.getenv("APP_ENV") ?: "dev"
     System.out.println(env)
     systemProperty("spring.profiles.active", env)
 }
