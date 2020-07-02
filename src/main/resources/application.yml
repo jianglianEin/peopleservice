@@ -1,16 +1,6 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    username: jianglianein
-    password: ft1998226
-    url: jdbc:postgresql://45.32.133.122:5432/people
-  application:
-    name: people-service-API
-  redis:
-    host: 45.32.133.122
-    port: 6379
-    timeout: 10000
-    password: ft1998226
+  profiles:
+    active: dev
   mail:
     host: smtp.qq.com
     username: 913057041@qq.com
@@ -22,15 +12,4 @@ spring:
         starttls:
           enable: true
           required: true
-cors:
-  url: "*"
 
-microservice:
-  peopleservice:
-    url: https://jianglianzweipeopleservice.cfapps.io
-
-env: "dev"
-
-server:
-  #端口号
-  port: 8000
