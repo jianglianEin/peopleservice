@@ -27,7 +27,7 @@ cors:
 
 microservice:
   peopleservice:
-    url: https://jianglianzweipeopleservice.cfapps.io
+    url: https://scrum-board-people-service.herokuapp.com
 
 env: "dev"
 
