@@ -1,21 +1,21 @@
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    username: jianglianein
-    password: ft1998226
-    url: jdbc:postgresql://45.32.133.122:5432/people
+    driver-class-name:
+    username:
+    password:
+    url:
   application:
     name: people-service-API
   redis:
-    host: 45.32.133.122
-    port: 6379
+    host:
+    port:
     timeout: 10000
-    password: ft1998226
+    password:
   mail:
-    host: smtp.qq.com
-    username: 913057041@qq.com
-    password: vcxnmszkmxodbefj
-    default-encoding: utf-8
+    host:
+    username:
+    password:
+    default-encoding:
     properties:
       mail:
         auth: true
@@ -23,14 +23,13 @@ spring:
           enable: true
           required: true
 cors:
-  url: "*"
+  url:
 
 microservice:
   peopleservice:
-    url: https://scrum-board-people-service.herokuapp.com
+    url:
 
 env: "dev"
 
 server:
-  #端口号
-  port: 8000
+  port:
