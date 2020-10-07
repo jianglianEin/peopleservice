@@ -16,7 +16,7 @@ class User() {
     var email: String? = null
 
     @Column(name = "icon")
-    var icon: String? = ""
+    var icon: String? = null
 
     @Column(name = "password")
     var password: String? = null
