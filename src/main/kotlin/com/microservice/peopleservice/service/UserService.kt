@@ -20,14 +20,6 @@ class UserService {
         return loginUser
     }
 
-    fun logout(username: String): Message {
-        if (userRepository.findByUsername(username) == null) {
-            return Message(false, "username do not exit")
-        }
-
-        return Message(true, "logout success")
-    }
-
     fun createUser(newUse: User): Message {
         val sameNameOrEmailUser = userRepository.findByUsernameOrEmail(newUse.username!!, newUse.email!!)
         return when {
